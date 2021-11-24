@@ -1,10 +1,26 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post
 
-# Create your views here.
+# posts = [
+#     {
+#         'author': 'Ada',
+#         'title': 'First title', 
+#         'content': 'First post content', 
+#         'date_posted': 'November 22, 2021'
+#     },
+#     {
+#         'author': 'Nadi',
+#         'title': 'Second title', 
+#         'content': 'Second post content', 
+#         'date_posted': 'November 23, 2021'
+#     }
+# ]
+
 def home(request):
-    return HttpResponse('<h1>Blog home</h1>')
+    context = {
+        'posts': Post.objects.all() # posts list (above) was here before cresting the db, now we get the data from the db 
+    }
+    return render(request, 'blog/home.html', context)
 
 def about(request):
-    return HttpResponse('<h1>Blog about</h1>')
+    return render(request, 'blog/about.html', {'title': 'About'})
