@@ -5,19 +5,19 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join today</legend>
+                <legend class="border-bottom mb-4">Log In</legend>
                 {{ form|crispy }} <!-- form.as_p: as_p means as paragraph, for rendering the elements better 
                 also to add extra fields here (like email for ex.) we create forms.py and inherid from the existing form (UserCreationForm)
             crispy is used for styling, it uses bootstrap - if u inspect it, you'll see it has added extra bootstrap elements that u don't see on this file-->
             
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign up</button>
+                <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
         </form>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Already have an account? <a href="{% url 'login' %}">Sign in</a>
+                Need an account? <a class="ml-2" href="{% url 'register' %}">Sign up now</a>
             </small>
         </div>
     </div>
